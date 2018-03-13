@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Table as Table;
+use Illuminate\Support\Facades\Request;
 
 class HomeController extends Controller
 {
@@ -15,7 +15,6 @@ class HomeController extends Controller
     public function index()
     {
         $data = Table::getData();
-//        var_dump($data);die;
         return view('home', compact('data'));
     }
 
@@ -30,14 +29,14 @@ class HomeController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function store(Request $request)
     {
-        //
+        $postData = Table::create(Request::all());
+//        $postData = $postData['Description'];
+        return view('form.addRecord');
     }
 
     /**

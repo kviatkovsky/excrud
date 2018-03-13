@@ -44,6 +44,6 @@
                 </table>
             </div>
         </div>
-        <button type="button" class="btn btn-success">Add new data</button>
+        <a href="addRecord"><button type="button" class="btn btn-success">Add new data</button></a>
     </div>
 </div>

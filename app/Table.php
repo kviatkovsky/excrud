@@ -15,4 +15,24 @@ class Table extends Model
 
         return $data;
     }
+
+    /**
+     * @param array $request request
+     * @return array
+     */
+    public static function create(array $request): array
+    {
+        DB::table('importData')->insert(
+            [
+                'first_name' => $request['first_name'],
+                'last_name' => $request['last_name'],
+                'salutation' => $request['salutation'],
+                'years' => $request['years'],
+                'position' => $request['position'],
+                'salary' => $request['salary'],
+            ]
+        );
+
+        return $request;
+    }
 }
