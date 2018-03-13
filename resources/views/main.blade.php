@@ -1,9 +1,8 @@
-<button type="button" class="btn btn-primary">Add new data</button>
+<button type="button" class="btn btn-primary">Import data</button>
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
             <div class="card-header">Dashboard</div>
-
             <div class="card-body">
                 @if (session('status'))
                     <div class="alert alert-success">
@@ -35,8 +34,8 @@
                             <td>{{$item->position}}</td>
                             <td>{{$item->salary}}</td>
                             <td>
-                                <button type="button" class="btn btn-primary">Update</button>
-                                <button type="button" class="btn btn-danger">Delete</button>
+                                <a href="/addRecord/{{$item->id}}"><button type="button" class="btn btn-primary">Update</button></a>
+                                <a href="/home/{{$item->id}}"><button type="button" class="btn btn-danger">Delete</button></a>
                             </td>
                         </tr>
                     @endforeach
