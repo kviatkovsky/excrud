@@ -58,10 +58,13 @@ class HomeController extends Controller
     /**
      * @param Request $request request
      * @param int $id id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function update(Request $request, int $id)
     {
-        //
+        $dataById = Table::updateEntity(Request::all(), $id);
+        $dataById = $dataById[0];
+        return view('form.addRecord', compact('dataById'));
     }
 
     /**

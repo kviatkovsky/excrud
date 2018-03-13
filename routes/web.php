@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/addRecord', 'HomeController@create')->name('home');
 Route::post('/store', 'HomeController@store');
+Route::get('/home/{id}', 'HomeController@destroy');
+Route::get('/addRecord/{id}', 'HomeController@update');
