@@ -55,7 +55,7 @@ class HomeController extends Controller
         //
     }
 
-    /**
+    /**composer require "maatwebsite/excel:~2.1.0"
      * @param Request $request request
      * @param int $id id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -78,6 +78,6 @@ class HomeController extends Controller
     public function destroy(int $id)
     {
         $status = Table::destroy($id);
-        return view('home');
+        return view('/home');
     }
 }
