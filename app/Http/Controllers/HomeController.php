@@ -34,41 +34,32 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        $postData = Table::create(Request::all());
-//        $postData = $postData['Description'];
+        Table::create(Request::all());
+
         return view('form.addRecord');
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id id
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id id
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         //
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request request
+     * @param int $id id
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         //
     }
@@ -76,11 +67,14 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @TODO show status
+     *
+     * @param  int $id id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
-        //
+        $status = Table::destroy($id);
+        return view('home');
     }
 }

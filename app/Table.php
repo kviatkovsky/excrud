@@ -35,4 +35,10 @@ class Table extends Model
 
         return $request;
     }
+
+    public static function destroy($id): bool
+    {
+        $status = DB::table('importData')->where('id', '=', $id)->delete();
+        return $status;
+    }
 }
