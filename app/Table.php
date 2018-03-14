@@ -19,9 +19,8 @@ class Table extends Model
 
     /**
      * @param array $request request
-     * @return array
      */
-    public static function create(array $request): array
+    public static function create(array $request): void
     {
         DB::table('importData')->insert(
             [
@@ -33,8 +32,6 @@ class Table extends Model
                 'salary' => $request['salary'],
             ]
         );
-
-        return $request;
     }
 
     /**
@@ -52,7 +49,7 @@ class Table extends Model
         } else {
             DB::table('importData')
                 ->where('id', '=', $id)
-                ->insert(
+                ->update(
                     [
                         'first_name' => $request['first_name'],
                         'last_name' => $request['last_name'],
