@@ -39,7 +39,7 @@ class Table extends Model
      * @param int $id id
      * @return array
      */
-    public static function updateEntity(array $request, int $id): array
+    public static function updateEntity(array $request, int $id)
     {
         if (empty($request)) {
             $data = DB::table('importData')->where('id', '=', $id)->get();
@@ -47,7 +47,7 @@ class Table extends Model
                 return json_decode($data, true);
             }
         } else {
-            DB::table('importData')
+            $status = DB::table('importData')
                 ->where('id', '=', $id)
                 ->update(
                     [
@@ -60,8 +60,7 @@ class Table extends Model
                     ]
                 );
         }
-
-        return $request;
+        return (isset($status)) ? $status : $request;
     }
 
     public static function destroy($id): bool
