@@ -35,7 +35,7 @@ class HomeController extends Controller
     {
         Table::create(Request::all());
 
-        return back();
+        return redirect()->to('/');
     }
 
     /**composer require "maatwebsite/excel:~2.1.0"
@@ -45,6 +45,9 @@ class HomeController extends Controller
     public function update(int $id)
     {
         $dataById = Table::updateEntity(Request::all(), $id);
+        if(isset($dataById) && $dataById === 1){
+            return redirect()->to('/');
+        }
         $dataById = (isset($dataById[0])) ? $dataById[0] : $dataById;
 
         return view('form.addRecord', ['dataById'=>$dataById, 'id'=>$id]);
@@ -53,14 +56,12 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @TODO show status
-     *
      * @param  int $id id
      * @return \Illuminate\Http\Response
      */
     public function destroy(int $id)
     {
-        $status = Table::destroy($id);
+        Table::destroy($id);
         return back();
 
     }
