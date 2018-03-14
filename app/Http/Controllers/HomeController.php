@@ -29,42 +29,25 @@ class HomeController extends Controller
     }
 
     /**
-     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function store(Request $request)
+    public function store()
     {
         Table::create(Request::all());
 
-        return view('form.addRecord');
-    }
-
-    /**
-     * @param int $id id
-     */
-    public function show(int $id)
-    {
-        //
-    }
-
-    /**
-     * @param int $id id
-     */
-    public function edit(int $id)
-    {
-        //
+        return back();
     }
 
     /**composer require "maatwebsite/excel:~2.1.0"
-     * @param Request $request request
      * @param int $id id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function update(Request $request, int $id)
+    public function update(int $id)
     {
         $dataById = Table::updateEntity(Request::all(), $id);
-        $dataById = $dataById[0];
-        return view('form.addRecord', compact('dataById'));
+        $dataById = (isset($dataById[0])) ? $dataById[0] : $dataById;
+
+        return view('form.addRecord', ['dataById'=>$dataById, 'id'=>$id]);
     }
 
     /**
@@ -78,6 +61,7 @@ class HomeController extends Controller
     public function destroy(int $id)
     {
         $status = Table::destroy($id);
-        return view('/home');
+        return back();
+
     }
 }

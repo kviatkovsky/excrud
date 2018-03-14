@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form action="/store" method="post">
+        <form action="/store/@if (isset($id)){{$id}} @endif"  method="post">
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="first_name">First name</label>
